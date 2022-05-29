@@ -5,7 +5,7 @@ type Result struct {
 	Link        string   `json:"link"`
 	Description string   `json:"description"`
 	PubDate     string   `json:"pubDate"`
-	Image       string   `json:"image"`
+	Image       string   `json:"image_url"`
 	Creators    []string `json:"creator"`
 }
 

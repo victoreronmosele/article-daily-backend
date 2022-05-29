@@ -33,17 +33,15 @@ func GetArticles() []models.Article {
 		log.Fatal(err)
 	}
 
-	results := newsData.Results 
+	results := newsData.Results
 
-	resultLength := len(results)
- 
-	for i := 0; i < resultLength-1; i++ {
-		newsDataItem := results[i]
-		newsDataItemTitle := newsDataItem.Title
-		newsDataItemLink := newsDataItem.Link
-		newsDataItemDescription := newsDataItem.Description
-		newsDataItemImage := newsDataItem.Image
-		newsDataItemCreators := newsDataItem.Creators
+	for _, result := range results {
+
+		newsDataItemTitle := result.Title
+		newsDataItemLink := result.Link
+		newsDataItemDescription := result.Description
+		newsDataItemImage := result.Image
+		newsDataItemCreators := result.Creators
 
 		article := models.Article{
 			Title:       newsDataItemTitle,

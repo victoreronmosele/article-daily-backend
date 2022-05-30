@@ -70,5 +70,24 @@ func TestFetch(t *testing.T) {
 	if !cmp.Equal(actual, expected) {
 		t.Errorf("Expected %#v, got %#v", expected, actual)
 	}
+}
 
+func TestFetchWithError(t *testing.T) {
+	defer gock.Off()
+
+	mockNewsDataKey := "mock-news-data-key"
+
+	gock.New("https://newsdata.io/api/1/news?apikey=" + mockNewsDataKey + "&language=en").
+		Get("").
+		Reply(500)
+
+	config := config.Config{NewsDataAPIKey: mockNewsDataKey}
+
+	newData := NewsData{Config: config}
+
+	_, err := newData.Fetch()
+
+	if err == nil {
+		t.Errorf("Expected error, got nil")
+	}
 }

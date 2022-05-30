@@ -62,7 +62,7 @@ func TestGetArticles(t *testing.T) {
 		},
 	}
 
-	actual := GetArticles()
+	actual, _ := GetArticles()
 
 	if !cmp.Equal(actual, expected) {
 		t.Errorf("Expected %#v, got %#v", expected, actual)

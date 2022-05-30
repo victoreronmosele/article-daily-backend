@@ -3,14 +3,13 @@ package services
 import (
 	"encoding/json"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"os"
 
 	"article-daily-backend/server/models"
 )
 
-func GetArticles() []models.Article {
+func GetArticles() ([]models.Article, error) {
 	newsDataKey := os.Getenv("NEWS_DATA_KEY")
 
 	var articles []models.Article
@@ -18,19 +17,19 @@ func GetArticles() []models.Article {
 	res, err := http.Get("https://newsdata.io/api/1/news?apikey=" + newsDataKey + "&language=en")
 
 	if err != nil {
-		log.Fatal(err)
+		return []models.Article{}, err
 	}
 
 	defer res.Body.Close()
 	body, err := ioutil.ReadAll(res.Body)
 
 	if err != nil {
-		log.Fatal(err)
+		return []models.Article{}, err
 	}
 
 	var newsData models.NewsData
 	if err := json.Unmarshal(body, &newsData); err != nil {
-		log.Fatal(err)
+		return []models.Article{}, err
 	}
 
 	results := newsData.Results
@@ -53,5 +52,5 @@ func GetArticles() []models.Article {
 		articles = append(articles, article)
 	}
 
-	return articles
+	return articles, nil
 }

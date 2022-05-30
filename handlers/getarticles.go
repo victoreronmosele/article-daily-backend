@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"log"
 	"math/rand"
 	"net/http"
 
@@ -11,7 +12,11 @@ import (
 
 func GetArticle(context *gin.Context) {
 
-	articles := services.GetArticles()
+	articles, err := services.GetArticles()
+
+	if (err != nil) {
+		log.Fatal(err)
+	}
 
 	articlesNumber := len(articles)
 

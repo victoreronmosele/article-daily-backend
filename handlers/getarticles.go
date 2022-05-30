@@ -1,21 +1,28 @@
 package handlers
 
 import (
-	"log"
 	"math/rand"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 
-	"article-daily-backend/server/services"
+	"article-daily-backend/server/services/getarticles"
 )
 
-func GetArticle(context *gin.Context) {
+type GetArticle struct {
+	Service getarticles.GetArticles
+}
 
-	articles, err := services.GetArticles()
+func (g GetArticle) Run(context *gin.Context) {
 
-	if (err != nil) {
-		log.Fatal(err)
+	articles, err := g.Service.Fetch()
+
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{
+			"error": "Error retrieving articles. Please try again.",
+		})
+
+		return
 	}
 
 	articlesNumber := len(articles)

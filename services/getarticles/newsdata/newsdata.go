@@ -1,20 +1,22 @@
-package services
+package newsdata
 
 import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
-	"os"
 
+	"article-daily-backend/server/config"
 	"article-daily-backend/server/models"
 )
 
-func GetArticles() ([]models.Article, error) {
-	newsDataKey := os.Getenv("NEWS_DATA_KEY")
+type NewsData struct {
+	Config config.Config
+}
 
+func (n NewsData) Fetch() ([]models.Article, error) {
 	var articles []models.Article
 
-	res, err := http.Get("https://newsdata.io/api/1/news?apikey=" + newsDataKey + "&language=en")
+	res, err := http.Get("https://newsdata.io/api/1/news?apikey=" + n.Config.NewsDataAPIKey + "&language=en")
 
 	if err != nil {
 		return []models.Article{}, err

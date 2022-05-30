@@ -1,20 +1,19 @@
-package services
+package newsdata
 
 import (
-	"os"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
 	"gopkg.in/h2non/gock.v1"
 
+	"article-daily-backend/server/config"
 	"article-daily-backend/server/models"
 )
 
-func TestGetArticles(t *testing.T) {
-	//Remove this after extracting the client from the package
-	newsDataKey := os.Getenv("NEWS_DATA_KEY")
-
+func TestFetch(t *testing.T) {
 	defer gock.Off()
+
+	mockNewsDataKey := "mock-news-data-key"
 
 	testJsonResponse := map[string]interface{}{
 		"status":       "success",
@@ -47,7 +46,7 @@ func TestGetArticles(t *testing.T) {
 		},
 	}
 
-	gock.New("https://newsdata.io/api/1/news?apikey=" + newsDataKey + "&language=en").
+	gock.New("https://newsdata.io/api/1/news?apikey=" + mockNewsDataKey + "&language=en").
 		Get("").
 		Reply(200).
 		JSON(testJsonResponse)
@@ -62,7 +61,11 @@ func TestGetArticles(t *testing.T) {
 		},
 	}
 
-	actual, _ := GetArticles()
+	config := config.Config{NewsDataAPIKey: mockNewsDataKey}
+
+	newData := NewsData{Config: config}
+
+	actual, _ := newData.Fetch()
 
 	if !cmp.Equal(actual, expected) {
 		t.Errorf("Expected %#v, got %#v", expected, actual)

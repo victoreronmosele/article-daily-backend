@@ -52,7 +52,7 @@ func TestGetArticles(t *testing.T) {
 		Reply(200).
 		JSON(testJsonResponse)
 
-	want := []models.Article{
+	expected := []models.Article{
 		{
 			Title:       "Martijn Fischer denkt dat dit zijn laatste jaar als Hazes wordt",
 			Link:        "https://www.nu.nl/cultuur-overig/6182028/martijn-fischer-denkt-dat-dit-zijn-laatste-jaar-als-hazes-wordt.html",
@@ -62,10 +62,10 @@ func TestGetArticles(t *testing.T) {
 		},
 	}
 
-	articles := GetArticles()
+	actual := GetArticles()
 
-	if !cmp.Equal(articles, want) {
-		t.Errorf("Expected %#v, got %#v", want, articles)
+	if !cmp.Equal(actual, expected) {
+		t.Errorf("Expected %#v, got %#v", expected, actual)
 	}
 
 }

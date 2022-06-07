@@ -5,5 +5,5 @@ import (
 )
 
 type SendNotification interface {
-	Send(models.Notification)
+	SendNotification(models.Notification)
 }

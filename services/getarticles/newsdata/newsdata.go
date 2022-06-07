@@ -3,6 +3,7 @@ package newsdata
 import (
 	"encoding/json"
 	"io/ioutil"
+	"log"
 	"net/http"
 
 	"article-daily-backend/server/config"
@@ -22,17 +23,24 @@ func (n NewsData) Fetch() ([]models.Article, error) {
 		return []models.Article{}, err
 	}
 
+
+
 	defer res.Body.Close()
 	body, err := ioutil.ReadAll(res.Body)
+
 
 	if err != nil {
 		return []models.Article{}, err
 	}
 
+
 	var newsData models.NewsData
 	if err := json.Unmarshal(body, &newsData); err != nil {
 		return []models.Article{}, err
 	}
+
+	log.Println("3")
+
 
 	results := newsData.Results
 

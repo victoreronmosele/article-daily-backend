@@ -35,4 +35,5 @@ func main() {
 
 	router.GET("/article", getArticleHandler.Run)
 	router.Run(":8080")
+
 }

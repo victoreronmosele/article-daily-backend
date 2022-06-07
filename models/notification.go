@@ -1,7 +1,7 @@
 package models
 
-type Notification interface {
-	Title() string
-	Body() string
-	ImageUrl() string
+type Notification struct {
+	Title string `json:"title"`
+	Body string `json:"body"`
+	ImageUrl string `json:"imageurl"`
 }

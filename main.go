@@ -13,6 +13,13 @@ import (
 )
 
 func main() {
+
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+		log.Printf("defaulting to port %s", port)
+	}
+
 	err := godotenv.Load()
 
 	if err != nil {
@@ -34,6 +41,6 @@ func main() {
 	getArticleHandler := handlers.GetArticle{Service: getArticlesService}
 
 	router.GET("/article", getArticleHandler.Run)
-	router.Run(":8080")
+	router.Run(":" + port)
 
 }

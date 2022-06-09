@@ -23,7 +23,7 @@ func main() {
 	err := godotenv.Load()
 
 	if err != nil {
-		log.Fatal("Error loading .env file")
+		log.Fatalf("Error loading .env file %s", err.Error())
 	}
 
 	newsDataKey, exists := os.LookupEnv("NEWS_DATA_KEY")

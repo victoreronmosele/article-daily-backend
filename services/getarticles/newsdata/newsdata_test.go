@@ -6,8 +6,8 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"gopkg.in/h2non/gock.v1"
 
-	"github.com/victoreronmosele/article-daily-backend/config"
-	"github.com/victoreronmosele/article-daily-backend/models"
+	"article-daily-backend/server/config"
+	"article-daily-backend/server/models"
 )
 
 func TestFetch(t *testing.T) {

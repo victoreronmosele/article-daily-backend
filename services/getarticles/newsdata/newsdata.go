@@ -6,8 +6,8 @@ import (
 	"log"
 	"net/http"
 
-	"article-daily-backend/server/config"
-	"article-daily-backend/server/models"
+	"github.com/victoreronmosele/article-daily-backend/config"
+	"github.com/victoreronmosele/article-daily-backend/models"
 )
 
 type NewsData struct {

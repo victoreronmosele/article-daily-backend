@@ -6,7 +6,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"article-daily-backend/server/services/getarticles"
+	"github.com/victoreronmosele/article-daily-backend/services/getarticles"
 )
 
 type GetArticle struct {

@@ -1,4 +1,4 @@
-module article-daily-backend/server
+module github.com/victoreronmosele/article-daily-backend
 
 go 1.18
 

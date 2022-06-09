@@ -7,10 +7,10 @@ import (
 
 	"github.com/joho/godotenv"
 
-	"article-daily-backend/server/config"
-	"article-daily-backend/server/models"
-	"article-daily-backend/server/services/getarticles/newsdata"
-	"article-daily-backend/server/services/sendnotification/fcm"
+	"github.com/victoreronmosele/article-daily-backend/config"
+	"github.com/victoreronmosele/article-daily-backend/models"
+	"github.com/victoreronmosele/article-daily-backend/services/getarticles/newsdata"
+	"github.com/victoreronmosele/article-daily-backend/services/sendnotification/fcm"
 )
 
 func main() {
@@ -47,7 +47,6 @@ func main() {
 	if &randomArticle.Image == nil {
 		articleImage = "https://images.pexels.com/photos/4711052/pexels-photo-4711052.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
 	}
-
 
 	notification := models.Notification{Title: articleTitle, Body: articleDescription, ImageUrl: articleImage}
 

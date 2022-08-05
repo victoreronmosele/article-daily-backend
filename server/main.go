@@ -13,17 +13,15 @@ import (
 )
 
 func main() {
+	err := godotenv.Load("../.env")
+	if err != nil {
+		log.Fatalf("Error loading .env file %s", err.Error())
+	}
 
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
 		log.Printf("defaulting to port %s", port)
-	}
-
-	err := godotenv.Load()
-
-	if err != nil {
-		log.Fatalf("Error loading .env file %s", err.Error())
 	}
 
 	newsDataKey, exists := os.LookupEnv("NEWS_DATA_KEY")

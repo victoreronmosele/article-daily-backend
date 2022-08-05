@@ -14,7 +14,7 @@ import (
 )
 
 func main() {
-	err := godotenv.Load()
+	err := godotenv.Load("../.env")
 
 	if err != nil {
 		log.Fatal("Error loading .env file")
@@ -47,7 +47,6 @@ func main() {
 	if &randomArticle.Image == nil {
 		articleImage = "https://images.pexels.com/photos/4711052/pexels-photo-4711052.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
 	}
-
 
 	notification := models.Notification{Title: articleTitle, Body: articleDescription, ImageUrl: articleImage}
 

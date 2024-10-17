@@ -13,5 +13,5 @@ type NewsData struct {
 	Status       string   `json:"status"`
 	TotalResults int      `json:"totalResults"`
 	Results      []Result `json:"results"`
-	NextPage     int      `json:"nextPage"`
+	NextPage     string   `json:"nextPage"`
 }

@@ -1,7 +1,7 @@
 package sendnotification
 
 import (
-	"article-daily-backend/server/models"
+	"article-daily-backend/pkg/models"
 )
 
 type SendNotification interface {

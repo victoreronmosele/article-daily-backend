@@ -10,8 +10,8 @@ import (
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 
-	"article-daily-backend/server/config"
-	"article-daily-backend/server/models"
+	"article-daily-backend/pkg/config"
+	"article-daily-backend/pkg/models"
 )
 
 type NewsData struct {

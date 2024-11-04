@@ -9,7 +9,7 @@ import (
 	"firebase.google.com/go/messaging"
 	"google.golang.org/api/option"
 
-	"article-daily-backend/server/models"
+	"article-daily-backend/pkg/models"
 )
 
 type FCM struct {

@@ -1,6 +1,6 @@
 package getarticles
 
-import "article-daily-backend/server/models"
+import "article-daily-backend/pkg/models"
 
 type GetArticles interface {
 	Fetch() ([]models.Article, error)

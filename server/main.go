@@ -7,9 +7,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 
-	"article-daily-backend/server/config"
+	"article-daily-backend/pkg/config"
+	"article-daily-backend/pkg/services/getarticles/newsdata"
 	"article-daily-backend/server/handlers"
-	"article-daily-backend/server/services/getarticles/newsdata"
 )
 
 func main() {

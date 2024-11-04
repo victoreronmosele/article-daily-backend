@@ -7,10 +7,10 @@ import (
 
 	"github.com/joho/godotenv"
 
-	"article-daily-backend/server/config"
-	"article-daily-backend/server/models"
-	"article-daily-backend/server/services/getarticles/newsdata"
-	"article-daily-backend/server/services/sendnotification/fcm"
+	"article-daily-backend/pkg/config"
+	"article-daily-backend/pkg/models"
+	"article-daily-backend/pkg/services/getarticles/newsdata"
+	"article-daily-backend/pkg/services/sendnotification/fcm"
 )
 
 func main() {
